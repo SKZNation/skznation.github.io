@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Альбоми — SKZ Nation</title>
+  <style>
+    body { background:#0d0d0d; color:#fff; margin:0; font-family:Arial; }
+    header { padding:20px; text-align:center; background:#111; position:sticky; top:0; }
+    nav a { color:#fff; margin:0 15px; text-decoration:none; font-weight:bold; }
+    h1 { text-align:center; margin-top:40px; }
+
+    .grid { 
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:20px; 
+      padding:30px;
+    }
+    
+    .album {
+      background:#111;
+      padding:15px;
+      border-radius:12px;
+      text-align:center;
+      transition:0.2s ease;
+    }
+
+    .album:hover {
+      transform: scale(1.03);
+      background:#181818;
+    }
+
+    .album img {
+      width:100%;
+      border-radius:10px;
+      display:block;
+    }
+
+    .album h3 { margin:10px 0 5px; }
+
+  </style>
+</head>
+
+<body>
+
+<header>
+  <nav>
+    <a href="/">Головна</a>
+    <a href="/members">Учасники</a>
+    <a href="/albums">Альбоми</a>
+    <a href="/photocards">Фотокартки</a>
+    <a href="/news">Новини</a>
+  </nav>
+</header>
+
+<h1>Дискографія Stray Kids</h1>
+
+<div class="grid">
+
+  <div class="album">
+    <img src="https://i.imgur.com/FhHfb9z.jpeg" alt="5-Star Cover">
+    <h3>★★★★★ (5-STAR)</h3>
+    <p>2023</p>
+  </div>
+
+  <div class="album">
+    <img src="https://i.imgur.com/tUo4MuM.jpeg" alt="MAXIDENT Cover">
+    <h3>MAXIDENT</h3>
+    <p>2022</p>
+  </div>
+
+  <div class="album">
+    <img src="https://i.imgur.com/Ng4dG2b.jpeg" alt="ODDINARY Cover">
+    <h3>ODDINARY</h3>
+    <p>2022</p>
+  </div>
+
+  <div class="album">
+    <img src="https://i.imgur.com/dzEgJqS.jpeg" alt="NOEASY Cover">
+    <h3>NOEASY</h3>
+    <p>2021</p>
+  </div>
+
+</div>
+
+<footer style="text-align:center;padding:20px;background:#111;">
+  © 2025 SKZ Nation. Фан-проєкт.
+</footer>
+
+</body>
+</html>
