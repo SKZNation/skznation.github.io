@@ -1,19 +1,44 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-<style>
-:root { --bg: #ffffff; --text: #000000; }
-.dark-theme { --bg: #0d0d0d; --text: #ffffff; }
-body { background-color: var(--bg); color: var(--text); transition: 0.3s ease; }
-.theme-btn { cursor: pointer; font-size: 20px; background: none; border: none; }
-</style>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Stray Kids Fan Site</title>
   <link rel="stylesheet" href="styles.css">
+  <style>
+    :root { --bg: #ffffff; --text: #000000; --accent: #ff0000; }
+    .dark-theme { --bg: #0d0d0d; --text: #ffffff; --accent: #ff0000; }
+    body { background-color: var(--bg); color: var(--text); transition: 0.3s ease; font-family: Arial, sans-serif; margin:0; }
+    header { padding:20px; text-align:center; background:#111; position:sticky; top:0; }
+    nav a { color:#fff; margin:0 15px; text-decoration:none; font-weight:bold; }
+    .hero { padding:120px 20px; text-align:center; }
+    .hero h1 { font-size:48px; margin-bottom:15px; }
+    .hero p { font-size:20px; opacity:0.9; }
+    footer { text-align:center; padding:20px; background:#111; margin-top:40px; }
+
+    /* Кнопка перемикання теми */
+    #theme-toggle {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      width: 60px;
+      height: 60px;
+      background: var(--accent);
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: #fff;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      transition: transform 0.2s;
+    }
+    #theme-toggle:hover { transform: rotate(45deg); }
+  </style>
 </head>
 <body>
-<button id="theme-toggle" class="theme-btn">🌙</button>
   <header>
     <h1>Stray Kids фан-сайт</h1>
     <nav>
@@ -32,18 +57,20 @@ body { background-color: var(--bg); color: var(--text); transition: 0.3s ease; }
   <footer>
     <p>© 2025 Stray Kids Fan Page</p>
   </footer>
-<script>
-const themeToggle = document.getElementById("theme-toggle");
-const currentTheme = localStorage.getItem("theme");
-if (currentTheme === "dark") { document.body.classList.add("dark-theme"); themeToggle.textContent = "☀️"; }
-themeToggle.addEventListener("click", () => {
-  document.body.classList.toggle("dark-theme");
-  if (document.body.classList.contains("dark-theme")) {
-    localStorage.setItem("theme", "dark"); themeToggle.textContent = "☀️";
-  } else {
-    localStorage.setItem("theme", "light"); themeToggle.textContent = "🌙";
-  }
-});
-</script>
+
+  <button id="theme-toggle">🧭</button>
+  <script>
+    const themeToggle = document.getElementById("theme-toggle");
+    const currentTheme = localStorage.getItem("theme");
+    if(currentTheme === "dark") { document.body.classList.add("dark-theme"); }
+    themeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark-theme");
+      if(document.body.classList.contains("dark-theme")) {
+        localStorage.setItem("theme","dark");
+      } else {
+        localStorage.setItem("theme","light");
+      }
+    });
+  </script>
 </body>
 </html>
