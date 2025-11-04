@@ -9,8 +9,9 @@
     :root { --bg: #ffffff; --text: #ffffff; --accent: #ff0000; --nav-text: #ffffff; --hero-text: #000000; }
     .dark-theme { --bg: #0d0d0d; --text: #ffffff; --accent: #ff0000; --nav-text: #ffffff; --hero-text: #ffffff; }
     body { background-color: var(--bg); color: var(--text); transition: background 0.3s ease, color 0.3s ease; font-family: Arial, sans-serif; margin:0; }
-    header { padding:20px; text-align:center; background:#111; }
-    header h1 { color: var(--text); transition: color 0.3s ease; }
+    header { padding:20px; text-align:center; background:#111; display:flex; align-items:center; justify-content:space-between; }
+    .logo { display:flex; align-items:center; }
+    .logo svg { width:200px; height:50px; margin-right:10px; }
     nav a { color: var(--nav-text); margin:0 15px; text-decoration:none; font-weight:bold; transition: color 0.3s ease; }
     .hero { padding:120px 20px; text-align:center; }
     .hero h2, .hero p { color: var(--hero-text); transition: color 0.3s ease; }
@@ -42,7 +43,14 @@
 </head>
 <body>
   <header>
-    <h1>Stray Kids фан-сайт</h1>
+    <div class="logo">
+      <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+        <!-- Звичайна п'ятикутна зірка, менша і акуратніша -->
+        <polygon points="100,30 115,70 155,70 120,100 135,140 100,115 65,140 80,100 45,70 85,70" fill="none" stroke="currentColor" stroke-width="4"/>
+        <!-- Напис STAY ZONE поруч, трохи більший шрифт -->
+        <text x="220" y="105" font-family="Arial, sans-serif" font-size="38" fill="currentColor" font-weight="bold" text-anchor="start" dominant-baseline="middle">STAY ZONE</text>
+      </svg>
+    </div>
     <nav>
       <a href="index.html">Головна</a>
       <a href="members.html">Учасники</a>
@@ -76,3 +84,4 @@
   </script>
 </body>
 </html>
+
