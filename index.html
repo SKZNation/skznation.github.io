@@ -1,39 +1,49 @@
 <!DOCTYPE html>
 <html lang="uk">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SKZ Nation — Фан-сайт Stray Kids</title>
-  <link rel="stylesheet" href="style.css" />
-  <style>
-    body { font-family: Arial, sans-serif; margin: 0; background: #0d0d0d; color: #fff; }
-    header { padding: 20px; text-align: center; background: #111; position: sticky; top: 0; }
-    nav a { color: #fff; margin: 0 15px; text-decoration: none; font-weight: bold; }
-    .hero { padding: 120px 20px; text-align: center; background: #000; }
-    .hero h1 { font-size: 48px; margin-bottom: 15px; letter-spacing: 2px; }
-    .hero p { font-size: 20px; opacity: 0.9; }
-    footer { text-align: center; padding: 20px; background:#111; margin-top: 40px; }
-  </style>
+<style>
+:root { --bg: #ffffff; --text: #000000; }
+.dark-theme { --bg: #0d0d0d; --text: #ffffff; }
+body { background-color: var(--bg); color: var(--text); transition: 0.3s ease; }
+.theme-btn { cursor: pointer; font-size: 20px; background: none; border: none; }
+</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Stray Kids Fan Site</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<button id="theme-toggle" class="theme-btn">🌙</button>
   <header>
+    <h1>Stray Kids фан-сайт</h1>
     <nav>
-      <a href="/">Головна</a>
-      <a href="/members">Учасники</a>
-      <a href="/albums">Альбоми</a>
-      <a href="/photocards">Фотокартки</a>
-      <a href="/news">Новини</a>
+      <a href="index.html">Головна</a>
+      <a href="members.html">Учасники</a>
+      <a href="albums.html">Альбоми</a>
+      <a href="merch.html">Мерч</a>
     </nav>
   </header>
 
   <section class="hero">
-    <h1>SKZ Nation</h1>
-    <p>Найкраче місце для STAY 🇺🇦</p>
-    <p>Новини • Альбоми • Фото • Фан-контент</p>
+    <h2>Ласкаво просимо до Stay-зони 💫</h2>
+    <p>Новини, альбоми, фотокартки та все про Stray Kids!</p>
   </section>
 
   <footer>
-    © 2025 SKZ Nation фан-проєкт. Неофіційний сайт.
+    <p>© 2025 Stray Kids Fan Page</p>
   </footer>
+<script>
+const themeToggle = document.getElementById("theme-toggle");
+const currentTheme = localStorage.getItem("theme");
+if (currentTheme === "dark") { document.body.classList.add("dark-theme"); themeToggle.textContent = "☀️"; }
+themeToggle.addEventListener("click", () => {
+  document.body.classList.toggle("dark-theme");
+  if (document.body.classList.contains("dark-theme")) {
+    localStorage.setItem("theme", "dark"); themeToggle.textContent = "☀️";
+  } else {
+    localStorage.setItem("theme", "light"); themeToggle.textContent = "🌙";
+  }
+});
+</script>
 </body>
 </html>
