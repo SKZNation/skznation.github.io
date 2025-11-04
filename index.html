@@ -6,16 +6,16 @@
   <title>Stray Kids Fan Site</title>
   <link rel="stylesheet" href="styles.css">
   <style>
-    :root { --bg: #ffffff; --text: #ffffff; --accent: #ff0000; --nav-text: #ffffff; --hero-text: #000000; }
+    :root { --bg: #ffffff; --text: #ffffff; --accent: #ff0000; --nav-text: #ffffff; --hero-text: #ffffff; }
     .dark-theme { --bg: #0d0d0d; --text: #ffffff; --accent: #ff0000; --nav-text: #ffffff; --hero-text: #ffffff; }
     body { background-color: var(--bg); color: var(--text); transition: background 0.3s ease, color 0.3s ease; font-family: Arial, sans-serif; margin:0; }
     header { padding:20px; text-align:center; background:#111; display:flex; align-items:center; justify-content:space-between; }
     .logo { display:flex; align-items:center; }
     .logo svg { width:200px; height:50px; margin-right:10px; }
     nav a { color: var(--nav-text); margin:0 15px; text-decoration:none; font-weight:bold; transition: color 0.3s ease; }
-    .hero { position: relative; text-align:center; color: var(--hero-text); display:flex; justify-content:center; align-items:flex-start; height: 80vh; overflow: hidden; }
-    .hero img { width: 100%; height: 100%; object-fit: cover; position: absolute; top:0; left:0; z-index:0; }
-    .hero h2 { position: relative; top: 20px; z-index:1; font-size:48px; margin:0; color: var(--hero-text); }
+    .hero { position: relative; text-align:center; color: #ffffff; display:flex; justify-content:center; align-items:flex-start; height: 80vh; overflow: hidden; }
+    .hero img { width: 100%; height: 100%; object-fit: cover; position: absolute; top:0; left:0; z-index:0; transition: transform 0.3s ease; }
+    .hero h2 { position: relative; top: 20px; z-index:1; font-size:48px; margin:0; color:#ffffff; }
     footer { text-align:center; padding:20px; background:#111; color: var(--text); transition: color 0.3s ease; margin-top:40px; }
 
     /* Кнопка перемикання теми */
@@ -58,7 +58,7 @@
   </header>
 
   <section class="hero">
-    <img src="images/straykids.jpg" alt="Stray Kids">
+    <img src="images/straykids.jpg" alt="Stray Kids" id="hero-bg">
     <h2>Ласкаво просимо до Stray Kids Nation</h2>
   </section>
 
@@ -78,6 +78,13 @@
       } else {
         localStorage.setItem("theme","light");
       }
+    });
+
+    // Рух фону при скролі (паралакс)
+    const heroBg = document.getElementById('hero-bg');
+    window.addEventListener('scroll', () => {
+      const offset = window.pageYOffset;
+      heroBg.style.transform = `translateY(${offset * 0.5}px)`;
     });
   </script>
 </body>
