@@ -8,13 +8,14 @@
   <style>
     :root { --bg: #ffffff; --text: #000000; --accent: #ff0000; }
     .dark-theme { --bg: #0d0d0d; --text: #ffffff; --accent: #ff0000; }
-    body { background-color: var(--bg); color: var(--text); transition: 0.3s ease; font-family: Arial, sans-serif; margin:0; }
-    header { padding:20px; text-align:center; background:#111; position:sticky; top:0; }
-    nav a { color:#fff; margin:0 15px; text-decoration:none; font-weight:bold; }
+    body { background-color: var(--bg); color: var(--text); transition: background 0.3s ease, color 0.3s ease; font-family: Arial, sans-serif; margin:0; }
+    header { padding:20px; text-align:center; background:#111; }
+    header h1 { color: var(--text); transition: color 0.3s ease; }
+    nav a { color: var(--text); margin:0 15px; text-decoration:none; font-weight:bold; transition: color 0.3s ease; }
     .hero { padding:120px 20px; text-align:center; }
     .hero h1 { font-size:48px; margin-bottom:15px; }
     .hero p { font-size:20px; opacity:0.9; }
-    footer { text-align:center; padding:20px; background:#111; margin-top:40px; }
+    footer { text-align:center; padding:20px; background:#111; color: var(--text); transition: color 0.3s ease; margin-top:40px; }
 
     /* Кнопка перемикання теми */
     #theme-toggle {
