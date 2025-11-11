@@ -3,27 +3,68 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Учасники — SKZ Nation</title>
-  <link rel="stylesheet" href="../style.css">
+  <title>Учасники - SKZ Nation</title>
+  <link rel="stylesheet" href="styles.css">
   <style>
-    body { background:#0d0d0d; color:#fff; margin:0; font-family:Arial; }
-    header { padding:20px; text-align:center; background:#111; position:sticky; top:0; }
-    nav a { color:#fff; margin:0 15px; text-decoration:none; font-weight:bold; }
+    :root { --bg: #ffffff; --text: #ffffff; --accent: #ff0000; --nav-text: #ffffff; --hero-text: #ffffff; }
+    .dark-theme { --bg: #0d0d0d; --text: #ffffff; --accent: #ff0000; --nav-text: #ffffff; --hero-text: #ffffff; }
+    body { backgroung-color: var(--bg); color: var(--text); transition: background 0.3s ease, color 0.3s ease; font-family: Arial, sans-serif; margin:0; }
+    header { padding:20px; text-align:center; background:#111; display:flex; align-items:center; justify-content:space-between; }
+    .logo { display:flex; align-items:center; }
+    .logo svg { width:200px; height:50px; margin-right:10px; }
+    nav a { color: var(--nav-text); margin:0 15px; text-decoration:none; font-weight:bold; transition: color 0.3s ease; }
+    
+    :root { --bg: #ffffff; --text: #ffffff; --accent: #ff0000; --nav-text: #ffffff; --hero-text: #ffffff; }
+    .dark-theme { --bg: #0d0d0d; --text: #ffffff; --accent: #ff0000; --nav-text: #ffffff; --hero-text: #ffffff; }
+    body { backgroung-color: var(--bg); color: var(--text); transition: background 0.3s ease, color 0.3s ease; font-family: Arial, sans-serif; margin:0; }
+    header { padding:20px; text-align:center; background:#111; display:flex; align-items:center; justify-content:space-between; }
+    nav a { color: var(--nav-text); margin:0 15px; text-decoration:none; font-weight:bold; transition: color 0.3s ease; }
+    
     h1 { text-align:center; margin-top:40px; }
+    .logo { display:flex; align-items:center; }
+    .logo svg { width:200px; height:50px; margin-right:10px; }
     .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:20px; padding:30px; }
     .member { padding:20px; background:#111; border-radius:12px; text-align:center; }
     .member img { width:100%; border-radius:8px; }
     .member a { color:#fff; text-decoration:none; display:block; margin-top:10px; font-weight:bold; }
+    
+    /* Кнопка перемикання теми */
+    #theme-toggle {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      width: 60px;
+      height: 60px;
+      background: var(--none);
+      border-radius: 50%;
+      border: none;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      transition: transform 0.2s;
+      z-index:3;
+    }
+    #theme-toggle:hover { transform: rotate(45deg); }
   </style>
 </head>
-<body>
 
+<body>
+  <header>
+    <div class="logo">
+      <svg viewBox="00 00 700 200" xmlns="http://www.w3.org/2000/svg">
+        <polygon points="100,35 113,70 147,70 118,100 132,135 100,115 68,135 82,100 53,70 87,70" fill="none" stroke="currentColor" stroke-width="4"/>
+        <text x="180" y="105" font-family="Arial, sans-serif" font-size="55" fill="currentColor" font-weight="bold" text-anchor="start" dominant-baseline="middle">STAY ZONE</text>
+      </svg>
+    </div>
     <nav>
       <a href="index.html">Головна</a>
       <a href="members/index.html">Учасники</a>
       <a href="albums/index.html">Альбоми</a>
       <a href="merch.html">Мерч</a>
     </nav>
+  </header>
 
 <h1>Учасники Stray Kids</h1>
 
@@ -74,5 +115,44 @@
   © 2025 Stray Kids Fan Page
 </footer>
 
+ <!-- Кнопка перемикання теми -->
+<button id="theme-toggle">
+  <span id="theme-icon">🌕</span>
+</button>
+
+<script>
+  const themeToggle = document.getElementById("theme-toggle");
+  const themeIcon = document.getElementById("theme-icon");
+  const currentTheme = localStorage.getItem("theme");
+
+  // Перевіряємо поточну тему при завантаженні
+  if (currentTheme === "dark") {
+    document.body.classList.add("dark-theme");
+    themeIcon.textContent = "🌑";
+  } else {
+    themeIcon.textContent = "🌕";
+  }
+
+  // Обробка кліку по кнопці
+  themeToggle.addEventListener("click", () => {
+    document.body.classList.toggle("dark-theme");
+    const isDark = document.body.classList.contains("dark-theme");
+
+    // Анімація зміни емодзі
+    themeIcon.style.transition = "transform 0.5s ease, opacity 0.5s ease";
+    themeIcon.style.transform = "rotate(180deg)";
+    themeIcon.style.opacity = "0";
+
+    setTimeout(() => {
+      themeIcon.textContent = isDark ? "🌑" : "🌕";
+      themeIcon.style.transform = "rotate(0deg)";
+      themeIcon.style.opacity = "1";
+    }, 250);
+
+    // Збереження теми
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+  });
+ </script>
+  
 </body>
 </html>
